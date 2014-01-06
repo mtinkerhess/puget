@@ -1,0 +1,128 @@
+# Solutions to Project Euler problems
+# Based on solutions from https://wiki.python.org/moin/ProblemSets/Project%20Euler%20Solutions
+
+let filter fun list predicate
+{
+	let ret [];
+	for list fun item
+	{
+		if predicate item
+		{
+			append item ret
+		}
+	};
+	ret
+};
+
+let sum fun list
+{
+	let ret 0;
+	for list fun item
+	{
+		let ret + ret item
+	};
+	ret
+};
+
+let range fun length
+{
+	let ret [];
+	while < size ret length
+	{
+		append size ret ret
+	};
+	ret
+};
+
+let euler_1_helper fun max
+{
+	sum filter range max fun n { or = 0 % n 3 = 0 % n 5 }
+};
+
+let euler_1 fun
+{
+	euler_1_helper 1000
+};
+
+let fibs_under fun max
+{
+	let ret [1, 1];
+	while < get_at - size ret 1 ret max
+	{
+		append + get_at - size ret 1 ret get_at - size ret 2 ret ret;
+	};
+	pop ret;
+	ret
+};
+
+let filter_even fun seq
+{
+	filter seq fun item { = 0 % item 2 }
+};
+
+let euler_2_helper fun max
+{
+	sum filter_even fibs_under max
+};
+
+let euler_2 fun
+{
+	euler_2_helper 4000000
+};
+
+let max fun items
+{
+	let ret null;
+	for items fun item
+	{
+		if > item ret
+		{
+			let ret item
+		}
+	};
+	ret
+};
+
+let map fun items mapping
+{
+	let ret [];
+	for items fun item
+	{
+		append mapping item ret
+	};
+	ret
+};
+
+let any fun items predicate
+{
+	let ret false;
+	for items fun item
+	{
+		if predicate item
+		{
+			let ret true;
+			break
+		}
+	};
+	ret
+};
+
+# based on http://stackoverflow.com/questions/14138053/project-euler-3-with-python-most-efficient-method
+let euler_3_helper fun n
+{
+	let i 2;
+	while < * i i n
+	{
+		while = 0 % n i
+		{
+			let n / n i;
+		};
+		let i + i 1
+	};
+	n
+};
+
+let euler_3 fun
+{
+	euler_3_helper 600851475143
+};
